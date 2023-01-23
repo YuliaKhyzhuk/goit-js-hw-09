@@ -32,6 +32,8 @@ const options = {
 };
 
 const onTimerStart = event => {
+  startButtonEl.setAttribute('disabled', '');
+
   intervalID = setInterval(() => {
     const differenceMs = deadline - Date.now();
 

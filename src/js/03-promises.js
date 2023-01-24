@@ -15,8 +15,9 @@ const onSubmitBtnClick = event => {
 
   for (let i = 1; i <= amount; i += 1) {
     submittedData.position = i;
-    // console.log(submittedData);
+
     createPromise(i, delay);
+
     delay += step;
   }
 

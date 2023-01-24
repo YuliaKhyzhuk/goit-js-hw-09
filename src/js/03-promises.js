@@ -15,8 +15,8 @@ const onSubmitBtnClick = event => {
 
   for (let i = 1; i <= amount; i += 1) {
     submittedData.position = i;
-    console.log(submittedData);
-    createPromise(submittedData.position, delay);
+    // console.log(submittedData);
+    createPromise(i, delay);
     delay += step;
   }
 
@@ -25,9 +25,9 @@ const onSubmitBtnClick = event => {
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
         if (shouldResolve) {
-          resolve(submittedData);
+          resolve({ position, delay });
         } else {
-          reject(submittedData);
+          reject({ position, delay });
         }
       }, delay);
     });

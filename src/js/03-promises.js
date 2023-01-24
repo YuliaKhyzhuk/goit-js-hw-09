@@ -32,7 +32,7 @@ const onSubmitBtnClick = event => {
       }, delay);
     });
 
-    promise
+    return promise
       .then(({ position, delay }) => {
         console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })

@@ -14,9 +14,13 @@ const onSubmitBtnClick = event => {
   let { delay, step, amount } = submittedData;
 
   for (let i = 1; i <= amount; i += 1) {
-    submittedData.position = i;
-
-    createPromise(i, delay);
+    createPromise(i, delay)
+      .then(({ position, delay }) => {
+        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      })
+      .catch(({ position, delay }) => {
+        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+      });
 
     delay += step;
   }
@@ -33,13 +37,7 @@ const onSubmitBtnClick = event => {
       }, delay);
     });
 
-    return promise
-      .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-      })
-      .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-      });
+    return promise;
   }
 };
 
